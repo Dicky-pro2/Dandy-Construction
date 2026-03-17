@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import heroImage from "../assets/construction-hero.jpg";
+import PageTransition from "../components/PageTransition";
+import AnimatedSection from "../components/AnimatedSection";
+import Counter from "../components/Counter";
 
 // Services Data
 const services = [
@@ -67,10 +70,13 @@ const testimonials = [
 
 const Home = () => {
   return (
+    <PageTransition>
+
     <div>
       <Navbar />
 
       {/* Hero Section — Centered Text with Background */}
+      <AnimatedSection direction="up">
       <section
         className="relative w-full min-h-screen flex items-center justify-center text-center"
         style={{
@@ -128,8 +134,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+      </AnimatedSection>
 
       {/* Services Preview */}
+      <AnimatedSection direction="up">
       <section className="bg-gray-50 py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -162,8 +170,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+      </AnimatedSection>
 
       {/* Projects Preview */}
+      <AnimatedSection direction="up">
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -204,8 +214,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+      </AnimatedSection>
 
       {/* Why Choose Us */}
+      <AnimatedSection direction="up">
       <section className="bg-gray-50 py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -230,8 +242,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+</AnimatedSection>
 
       {/* Testimonials */}
+      <AnimatedSection direction="up">
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -261,8 +275,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+      </AnimatedSection>
 
       {/* CTA Banner */}
+      <AnimatedSection direction="up">
       <section className="bg-gold-500 py-16 text-center text-white">
         <h2 className="text-3xl font-bold mb-4">Ready to Build Something Great?</h2>
         <p className="mb-8 text-lg max-w-xl mx-auto">
@@ -275,8 +291,9 @@ const Home = () => {
           Get a Free Quote
         </Link>
       </section>
-
+      </AnimatedSection>
     </div>
+    </PageTransition>
   );
 };
 

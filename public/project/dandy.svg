@@ -1,0 +1,30 @@
+<svg width="260" height="200" viewBox="0 0 260 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="260" height="200" rx="20" fill="#0F172A"/>
+
+  <!-- Steel Roof Shape -->
+  <polygon points="40,100 130,30 220,100" fill="#F97316"/>
+
+  <!-- Inner Shadow Roof -->
+  <polygon points="60,100 130,45 200,100" fill="#EA580C"/>
+
+  <!-- Building Base -->
+  <rect x="60" y="100" width="140" height="70" fill="#1E293B" stroke="#F97316" stroke-width="2"/>
+
+  <!-- DC Monogram -->
+  <text x="80" y="150" fill="#F97316" font-size="40" font-family="Arial Black, sans-serif" letter-spacing="2">
+    DC
+  </text>
+
+  <!-- Company Name -->
+  <text x="50%" y="185" fill="#E5E7EB" font-size="12" font-family="Verdana, sans-serif" text-anchor="middle" letter-spacing="1.5">
+    DANDY CONSTRUCTION
+  </text>
+
+  <!-- Industrial Lines -->
+  <line x1="70" y1="110" x2="190" y2="110" stroke="#334155" stroke-width="2"/>
+  <line x1="70" y1="120" x2="190" y2="120" stroke="#334155" stroke-width="1"/>
+  <line x1="70" y1="130" x2="190" y2="130" stroke="#334155" stroke-width="1"/>
+
+</svg>
