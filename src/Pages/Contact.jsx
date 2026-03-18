@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ const Contact = () => {
     message: "",
   });
 
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,7 +20,28 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus("loading");
+
+    emailjs
+      .send(
+        "service_vimkhfr",
+        "template_7p06gj9",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+        },
+        "sd0_qQE068xtXR0py1GqL"
+      )
+      .then(() => {
+        setStatus("success");
+        setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+      })
+      .catch(() => {
+        setStatus("error");
+      });
   };
 
   return (
@@ -32,8 +54,7 @@ const Contact = () => {
           Contact <span className="text-gold-500">Us</span>
         </h1>
         <p className="mt-4 text-gray-600 max-w-xl mx-auto">
-          Have a project in mind? Reach out to us and let's build something
-          great together.
+          Have a project in mind? Reach out to us and let's build something great together.
         </p>
       </section>
 
@@ -44,7 +65,7 @@ const Contact = () => {
         <div className="bg-white rounded-lg shadow-md p-10">
           <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
 
-          {submitted ? (
+          {status === "success" ? (
             <div className="text-center py-16">
               <div className="text-6xl mb-4">✅</div>
               <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
@@ -52,7 +73,7 @@ const Contact = () => {
                 Thank you for reaching out. We'll get back to you within 24 hours.
               </p>
               <button
-                onClick={() => { setSubmitted(false); setFormData({ name: "", email: "", phone: "", service: "", message: "" }); }}
+                onClick={() => setStatus("idle")}
                 className="mt-6 bg-gold-500 text-white px-6 py-3 rounded hover:opacity-90 transition"
               >
                 Send Another Message
@@ -132,11 +153,19 @@ const Contact = () => {
                 />
               </div>
 
+              {/* Error Message */}
+              {status === "error" && (
+                <p className="text-red-500 text-sm">
+                  Something went wrong. Please try again or email us directly.
+                </p>
+              )}
+
               <button
                 type="submit"
-                className="bg-gold-500 text-white px-6 py-3 rounded font-semibold hover:opacity-90 transition"
+                disabled={status === "loading"}
+                className="bg-gold-500 text-white px-6 py-3 rounded font-semibold hover:opacity-90 transition disabled:opacity-60"
               >
-                Send Message
+                {status === "loading" ? "Sending..." : "Send Message"}
               </button>
             </form>
           )}
@@ -144,13 +173,9 @@ const Contact = () => {
 
         {/* Contact Info */}
         <div className="flex flex-col gap-8">
-
-          {/* Info Cards */}
           <div className="bg-white rounded-lg shadow-md p-8">
             <h2 className="text-2xl font-bold mb-6">Get In Touch</h2>
-
             <div className="flex flex-col gap-6">
-              {/* Phone */}
               <div className="flex items-start gap-4">
                 <div className="text-2xl">📞</div>
                 <div>
@@ -159,8 +184,6 @@ const Contact = () => {
                   <p className="text-gray-600 text-sm">+234 900 987 6543</p>
                 </div>
               </div>
-
-              {/* Email */}
               <div className="flex items-start gap-4">
                 <div className="text-2xl">📧</div>
                 <div>
@@ -169,8 +192,6 @@ const Contact = () => {
                   <p className="text-gray-600 text-sm">projects@dandyconstruction.com</p>
                 </div>
               </div>
-
-              {/* Address */}
               <div className="flex items-start gap-4">
                 <div className="text-2xl">📍</div>
                 <div>
@@ -181,8 +202,6 @@ const Contact = () => {
                   </p>
                 </div>
               </div>
-
-              {/* Working Hours */}
               <div className="flex items-start gap-4">
                 <div className="text-2xl">🕐</div>
                 <div>
@@ -198,28 +217,16 @@ const Contact = () => {
           <div className="bg-white rounded-lg shadow-md p-8">
             <h3 className="text-xl font-bold mb-4">Follow Us</h3>
             <div className="flex gap-4">
-              
-                <a href="https://facebook.com"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:opacity-90 transition text-sm font-medium"
-              >
+              <a href="https://facebook.com" target="_blank" rel="noreferrer"
+                className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:opacity-90 transition text-sm font-medium">
                 <span>📘</span> Facebook
               </a>
-              
-                <a href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded hover:opacity-90 transition text-sm font-medium"
-              >
+              <a href="https://instagram.com" target="_blank" rel="noreferrer"
+                className="flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded hover:opacity-90 transition text-sm font-medium">
                 <span>📸</span> Instagram
               </a>
-              
-                <a href="https://twitter.com"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 bg-sky-500 text-white px-4 py-2 rounded hover:opacity-90 transition text-sm font-medium"
-              >
+              <a href="https://twitter.com" target="_blank" rel="noreferrer"
+                className="flex items-center gap-2 bg-sky-500 text-white px-4 py-2 rounded hover:opacity-90 transition text-sm font-medium">
                 <span>🐦</span> Twitter
               </a>
             </div>
@@ -247,10 +254,7 @@ const Contact = () => {
         <p className="mb-8 text-lg max-w-xl mx-auto">
           Whether it's a small renovation or a large-scale project, we're ready to help.
         </p>
-        <Link
-          to="/projects"
-          className="bg-white text-gold-500 font-bold px-8 py-3 rounded hover:opacity-90 transition"
-        >
+        <Link to="/projects" className="bg-white text-gold-500 font-bold px-8 py-3 rounded hover:opacity-90 transition">
           View Our Projects
         </Link>
       </section>
