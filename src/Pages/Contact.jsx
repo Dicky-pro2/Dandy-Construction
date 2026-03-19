@@ -12,7 +12,7 @@ const Contact = () => {
     message: "",
   });
 
-  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [status, setStatus] = useState("idle");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -49,20 +49,20 @@ const Contact = () => {
       <Navbar />
 
       {/* Page Header */}
-      <section className="bg-gray-100 py-20 text-center">
-        <h1 className="text-4xl font-bold">
+      <section className="bg-gray-100 py-16 px-4 text-center">
+        <h1 className="text-3xl md:text-4xl font-bold">
           Contact <span className="text-gold-500">Us</span>
         </h1>
-        <p className="mt-4 text-gray-600 max-w-xl mx-auto">
+        <p className="mt-4 text-gray-600 max-w-xl mx-auto text-sm md:text-base">
           Have a project in mind? Reach out to us and let's build something great together.
         </p>
       </section>
 
       {/* Form + Info Section */}
-      <section className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
 
         {/* Contact Form */}
-        <div className="bg-white rounded-lg shadow-md p-10">
+        <div className="bg-white rounded-lg shadow-md p-6 sm:p-10">
           <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
 
           {status === "success" ? (
@@ -81,7 +81,6 @@ const Contact = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-              {/* Name */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
                 <input
@@ -95,7 +94,6 @@ const Contact = () => {
                 />
               </div>
 
-              {/* Email */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
                 <input
@@ -109,7 +107,6 @@ const Contact = () => {
                 />
               </div>
 
-              {/* Phone */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
                 <input
@@ -122,7 +119,6 @@ const Contact = () => {
                 />
               </div>
 
-              {/* Service */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Service Interested In</label>
                 <select
@@ -139,7 +135,6 @@ const Contact = () => {
                 </select>
               </div>
 
-              {/* Message */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Message *</label>
                 <textarea
@@ -153,7 +148,6 @@ const Contact = () => {
                 />
               </div>
 
-              {/* Error Message */}
               {status === "error" && (
                 <p className="text-red-500 text-sm">
                   Something went wrong. Please try again or email us directly.
@@ -163,7 +157,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="bg-gold-500 text-white px-6 py-3 rounded font-semibold hover:opacity-90 transition disabled:opacity-60"
+                className="w-full bg-gold-500 text-white px-6 py-3 rounded font-semibold hover:opacity-90 transition disabled:opacity-60"
               >
                 {status === "loading" ? "Sending..." : "Send Message"}
               </button>
@@ -172,10 +166,10 @@ const Contact = () => {
         </div>
 
         {/* Contact Info */}
-        <div className="flex flex-col gap-8">
-          <div className="bg-white rounded-lg shadow-md p-8">
+        <div className="flex flex-col gap-6 md:gap-8">
+          <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
             <h2 className="text-2xl font-bold mb-6">Get In Touch</h2>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-5">
               <div className="flex items-start gap-4">
                 <div className="text-2xl">📞</div>
                 <div>
@@ -188,8 +182,8 @@ const Contact = () => {
                 <div className="text-2xl">📧</div>
                 <div>
                   <h4 className="font-bold text-gray-800">Email</h4>
-                  <p className="text-gray-600 text-sm">info@dandyconstruction.com</p>
-                  <p className="text-gray-600 text-sm">projects@dandyconstruction.com</p>
+                  <p className="text-gray-600 text-sm break-all">info@dandyconstruction.com</p>
+                  <p className="text-gray-600 text-sm break-all">projects@dandyconstruction.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -214,9 +208,9 @@ const Contact = () => {
           </div>
 
           {/* Social Media */}
-          <div className="bg-white rounded-lg shadow-md p-8">
+          <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
             <h3 className="text-xl font-bold mb-4">Follow Us</h3>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-3">
               <a href="https://facebook.com" target="_blank" rel="noreferrer"
                 className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:opacity-90 transition text-sm font-medium">
                 <span>📘</span> Facebook
@@ -235,7 +229,7 @@ const Contact = () => {
       </section>
 
       {/* Google Map Embed */}
-      <section className="w-full h-96">
+      <section className="w-full h-64 sm:h-80 md:h-96 px-4 sm:px-0">
         <iframe
           title="Dandy Construction Location"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.537!2d7.0134!3d4.8156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwNDgnNTYuMiJOIDfCsDAwJzQ4LjIiRQ!5e0!3m2!1sen!2sng!4v1234567890"
@@ -249,9 +243,9 @@ const Contact = () => {
       </section>
 
       {/* CTA Banner */}
-      <section className="bg-gold-500 py-16 text-center text-white">
-        <h2 className="text-3xl font-bold mb-4">Let's Build Together</h2>
-        <p className="mb-8 text-lg max-w-xl mx-auto">
+      <section className="bg-gold-500 py-12 md:py-16 text-center text-white px-4">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4">Let's Build Together</h2>
+        <p className="mb-8 text-base md:text-lg max-w-xl mx-auto">
           Whether it's a small renovation or a large-scale project, we're ready to help.
         </p>
         <Link to="/projects" className="bg-white text-gold-500 font-bold px-8 py-3 rounded hover:opacity-90 transition">
