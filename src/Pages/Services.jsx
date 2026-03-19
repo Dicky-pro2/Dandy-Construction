@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const services = [
   {
@@ -63,7 +64,9 @@ const Services = () => {
               <h3 className="text-xl font-bold mb-3">{service.title}</h3>
 
               {/* Description */}
-              <p className="text-gray-600 text-sm flex-grow">{service.description}</p>
+              <p className="text-gray-600 text-sm flex-grow">
+                {service.description}
+              </p>
 
               {/* Link */}
               <Link
@@ -79,7 +82,9 @@ const Services = () => {
 
       {/* CTA Banner */}
       <section className="bg-gold-500 py-16 text-center text-white">
-        <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
+        <h2 className="text-3xl font-bold mb-4">
+          Ready to Start Your Project?
+        </h2>
         <p className="mb-8 text-lg">
           Let's work together to bring your construction vision to life.
         </p>
@@ -90,7 +95,7 @@ const Services = () => {
           Contact Us Today
         </Link>
       </section>
-
+      <Footer />
     </div>
   );
 };

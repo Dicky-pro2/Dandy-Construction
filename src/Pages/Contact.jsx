@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import emailjs from "@emailjs/browser";
+import Footer from "../components/Footer";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -33,11 +34,17 @@ const Contact = () => {
           service: formData.service,
           message: formData.message,
         },
-        "sd0_qQE068xtXR0py1GqL"
+        "sd0_qQE068xtXR0py1GqL",
       )
       .then(() => {
         setStatus("success");
-        setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          message: "",
+        });
       })
       .catch(() => {
         setStatus("error");
@@ -54,13 +61,13 @@ const Contact = () => {
           Contact <span className="text-gold-500">Us</span>
         </h1>
         <p className="mt-4 text-gray-600 max-w-xl mx-auto text-sm md:text-base">
-          Have a project in mind? Reach out to us and let's build something great together.
+          Have a project in mind? Reach out to us and let's build something
+          great together.
         </p>
       </section>
 
       {/* Form + Info Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-
         {/* Contact Form */}
         <div className="bg-white rounded-lg shadow-md p-6 sm:p-10">
           <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
@@ -70,7 +77,8 @@ const Contact = () => {
               <div className="text-6xl mb-4">✅</div>
               <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
               <p className="text-gray-600">
-                Thank you for reaching out. We'll get back to you within 24 hours.
+                Thank you for reaching out. We'll get back to you within 24
+                hours.
               </p>
               <button
                 onClick={() => setStatus("idle")}
@@ -82,7 +90,9 @@ const Contact = () => {
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Full Name *
+                </label>
                 <input
                   type="text"
                   name="name"
@@ -95,7 +105,9 @@ const Contact = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Email Address *
+                </label>
                 <input
                   type="email"
                   name="email"
@@ -108,7 +120,9 @@ const Contact = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Phone Number
+                </label>
                 <input
                   type="tel"
                   name="phone"
@@ -120,7 +134,9 @@ const Contact = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Service Interested In</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Service Interested In
+                </label>
                 <select
                   name="service"
                   value={formData.service}
@@ -128,15 +144,21 @@ const Contact = () => {
                   className="w-full border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-gold-500 text-gray-600"
                 >
                   <option value="">Select a service</option>
-                  <option value="Building Construction">Building Construction</option>
-                  <option value="Renovation & Remodeling">Renovation & Remodeling</option>
+                  <option value="Building Construction">
+                    Building Construction
+                  </option>
+                  <option value="Renovation & Remodeling">
+                    Renovation & Remodeling
+                  </option>
                   <option value="Project Management">Project Management</option>
                   <option value="Civil Engineering">Civil Engineering</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Message *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Message *
+                </label>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -182,8 +204,12 @@ const Contact = () => {
                 <div className="text-2xl">📧</div>
                 <div>
                   <h4 className="font-bold text-gray-800">Email</h4>
-                  <p className="text-gray-600 text-sm break-all">info@dandyconstruction.com</p>
-                  <p className="text-gray-600 text-sm break-all">projects@dandyconstruction.com</p>
+                  <p className="text-gray-600 text-sm break-all">
+                    info@dandyconstruction.com
+                  </p>
+                  <p className="text-gray-600 text-sm break-all">
+                    projects@dandyconstruction.com
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -191,7 +217,8 @@ const Contact = () => {
                 <div>
                   <h4 className="font-bold text-gray-800">Office Address</h4>
                   <p className="text-gray-600 text-sm">
-                    12 Construction Avenue, GRA Phase 2,<br />
+                    12 Construction Avenue, GRA Phase 2,
+                    <br />
                     Port Harcourt, Rivers State, Nigeria.
                   </p>
                 </div>
@@ -200,8 +227,12 @@ const Contact = () => {
                 <div className="text-2xl">🕐</div>
                 <div>
                   <h4 className="font-bold text-gray-800">Working Hours</h4>
-                  <p className="text-gray-600 text-sm">Monday – Friday: 8:00am – 6:00pm</p>
-                  <p className="text-gray-600 text-sm">Saturday: 9:00am – 3:00pm</p>
+                  <p className="text-gray-600 text-sm">
+                    Monday – Friday: 8:00am – 6:00pm
+                  </p>
+                  <p className="text-gray-600 text-sm">
+                    Saturday: 9:00am – 3:00pm
+                  </p>
                 </div>
               </div>
             </div>
@@ -211,16 +242,28 @@ const Contact = () => {
           <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
             <h3 className="text-xl font-bold mb-4">Follow Us</h3>
             <div className="flex flex-wrap gap-3">
-              <a href="https://facebook.com" target="_blank" rel="noreferrer"
-                className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:opacity-90 transition text-sm font-medium">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:opacity-90 transition text-sm font-medium"
+              >
                 <span>📘</span> Facebook
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer"
-                className="flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded hover:opacity-90 transition text-sm font-medium">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded hover:opacity-90 transition text-sm font-medium"
+              >
                 <span>📸</span> Instagram
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noreferrer"
-                className="flex items-center gap-2 bg-sky-500 text-white px-4 py-2 rounded hover:opacity-90 transition text-sm font-medium">
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 bg-sky-500 text-white px-4 py-2 rounded hover:opacity-90 transition text-sm font-medium"
+              >
                 <span>🐦</span> Twitter
               </a>
             </div>
@@ -244,15 +287,21 @@ const Contact = () => {
 
       {/* CTA Banner */}
       <section className="bg-gold-500 py-12 md:py-16 text-center text-white px-4">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Let's Build Together</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+          Let's Build Together
+        </h2>
         <p className="mb-8 text-base md:text-lg max-w-xl mx-auto">
-          Whether it's a small renovation or a large-scale project, we're ready to help.
+          Whether it's a small renovation or a large-scale project, we're ready
+          to help.
         </p>
-        <Link to="/projects" className="bg-white text-gold-500 font-bold px-8 py-3 rounded hover:opacity-90 transition">
+        <Link
+          to="/projects"
+          className="bg-white text-gold-500 font-bold px-8 py-3 rounded hover:opacity-90 transition"
+        >
           View Our Projects
         </Link>
       </section>
-
+      <Footer />
     </div>
   );
 };

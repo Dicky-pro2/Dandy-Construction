@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import aboutImage from "../assets/construction-hero.jpg";
+import Footer from "../components/Footer";
 
 const About = () => {
   return (
@@ -80,6 +81,7 @@ const About = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import heroImage from "../assets/construction-hero.jpg";
 import PageTransition from "../components/PageTransition";
 import AnimatedSection from "../components/AnimatedSection";
 import Counter from "../components/Counter";
+import Footer from "../components/Footer";
 
 // Services Data
 const services = [
@@ -293,6 +294,7 @@ const Home = () => {
       </section>
       </AnimatedSection>
     </div>
+    <Footer />
     </PageTransition>
   );
 };
